@@ -1,0 +1,17 @@
+.home-choice-div {
+    margin-top: 120px;
+    text-align: center;
+}
+form {
+      background-color: white;
+      padding: 30px 10px 30px 10px;
+      opacity: 90%;
+      border-radius: 10px !important;
+  }
+  .msg {
+      float: left;
+  }
+
+.errors {
+    margin: 0px;
+}

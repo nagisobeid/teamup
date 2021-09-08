@@ -1,0 +1,18 @@
+.home-choice-div {
+    margin-top: 120px;
+    text-align: center;
+    border-radius: 10px !important;
+}
+form {
+      background-color: white;
+      padding: 30px 10px 30px 10px;
+      opacity: 90%;
+  }
+  .msg {
+      float: left;
+  }
+.sign-up-link {
+    background: none;
+    border: none;
+    color: blue;
+}
