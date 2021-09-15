@@ -10,7 +10,6 @@ import bg from './components/rhimg.jpg';
 function App() {
   return (
     <>
-      
       <Router>
         <Switch>
           <Route path="/" exact component={Home}/>

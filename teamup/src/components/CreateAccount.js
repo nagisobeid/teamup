@@ -2,8 +2,13 @@ import './CreateAccount.css';
 import react, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Login from './Login'
+import { useHistory } from "react-router-dom";
 
 function CreateAccount() {
+
+  let history = useHistory();
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -15,6 +20,7 @@ function CreateAccount() {
 
 
   function validateForm(registerd) {
+    setUserExists('');
     let errors = {};
     let formIsValid = true;
     //Check for firstname
@@ -76,24 +82,22 @@ function CreateAccount() {
     }
 
     if(validateForm(registered)){
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-      setPassword('');
-      setPasswordVerify('');
 
     axios.post('http://localhost:4000/app/signup', registered)
     .then(res => {
-        if(res === 'User exists') {
-          console.log('hellllo')
+        if(res.data === true) {
+          setEmail('');
+          setPassword('');
+          setPasswordVerify('');
+          //setUserExists('');
           setUserExists('User exists')
+        } else if (res.data === false) {
+          console.log('redirecting');
+          let url = ('/login');
+          history.push(url)  // redirect
         }
     })
       //alert("Form submitted");
-    }else{
-        alert("Form has errors.")
-        console.log(errors);
-        //alert(res);
     }
   }
 

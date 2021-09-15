@@ -1,12 +1,21 @@
 import './Home.css';
 import Login from '../components/Login'
 import CreateAccount from '../components/CreateAccount'
+import NavStatus from '../components/NavStatus'
 import react, {useState, useEffect} from 'react'
 import logo from '../components/teamup.png';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Link} from 'react-router-dom';
+import axios from 'axios'
+
 
 function Home() {
+  //
+  let userSession;
+  axios.get('/', function(request, response) {
+    userSession = request.sesion;
+  });
+  //
   return (
     <>
     <div className="container">
@@ -15,8 +24,8 @@ function Home() {
           <img src={logo}/>
         </div>
         <div className="col">
-          <Link className="link" to="./login">Login</Link>
-          <Link className="link" to="./createaccount">Sign Up</Link>
+          <NavStatus/>
+          <p>{userSession}</p>
         </div>
       </div>
     <div className="row second-row">
